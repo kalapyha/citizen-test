@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import Colors from "../utils/colors";
 
 type ButtonProps = {
   title: string;
@@ -25,14 +26,14 @@ function CustomButton({
       style={[
         styles.button,
         {
-          backgroundColor: backgroundColor || "#2572b4",
-          borderColor: borderColor || "#2572b4",
+          backgroundColor: backgroundColor || Colors.primary500,
+          borderColor: borderColor || Colors.primary500,
           ...buttonStylesOverride,
         },
       ]}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, { color: textColor || "#fff" }]}>
+      <Text style={[styles.buttonText, { color: textColor || Colors.white }]}>
         {title}
       </Text>
       <Text style={{ textAlign: "center", marginBottom: -5, marginLeft: 5 }}>

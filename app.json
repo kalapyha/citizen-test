@@ -4,7 +4,7 @@
     "slug": "AwesomeQuiz",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/iTunesArtwork@2x.png",
     "userInterfaceStyle": "light",
     "packagerOpts": {
       "config": "metro.config.js",
