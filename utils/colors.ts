@@ -1,8 +1,14 @@
 export default {
   primary500: "#2572b4",
-  accent: "",
+  primary200: "#469dcd",
+  accent: "#ffc629",
   divider: "rgba(247,247,247,1.0)",
+  disabled: "rgba(0, 0, 0, 0.12)",
   white: "#fff",
+  successMain: "#00873d",
+  successDark: "#0d6932",
+  errorMain: "#dc373f",
+  errorDark: "#97322f",
   bgGradient: [
     "rgb(255, 255, 255)",
     "rgb(255, 255, 255)",
@@ -13,4 +19,5 @@ export default {
     "rgba(25, 47, 106, 0.7)",
     "rgb(25, 47, 106)",
   ],
+  shadow: "#171717",
 };

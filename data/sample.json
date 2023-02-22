@@ -3,12 +3,12 @@
     "id": "sample-1",
     "question": "In computing, what does MIDI stand for?",
     "choices": [
-      { "1": "Musical Instrument Digital Interface" },
-      { "2": "Musical Interface of Digital Instruments" },
-      { "3": "Modular Interface of Digital Instruments" },
-      { "4": "Musical Instrument Data Interface" }
+      "Musical Instrument Digital Interface",
+      "Musical Interface of Digital Instruments",
+      "Modular Interface of Digital Instruments",
+      "Musical Instrument Data Interface"
     ],
-    "correctId": "1"
+    "correctChoice": "Musical Instrument Digital Interface"
   },
   {
     "id": "sample-2",

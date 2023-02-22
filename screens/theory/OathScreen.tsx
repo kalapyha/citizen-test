@@ -12,10 +12,14 @@ const OathScreen = () => {
         In Canada, we profess our loyalty to a person who represents all
         Canadians and not to a document such as a constitution, a banner such as
         a flag, or a geopolitical entity such as a country. In our
-        constitutional monarchy, these elements are encompassed by the Sovereign
-        (Queen or King). It is a remarkably simple yet powerful principle:
-        Canada is personified by the Sovereign just as the Sovereign is
-        personified by Canada.
+        <Text style={s.textHighlighted}> constitutional monarchy</Text>, these
+        elements are encompassed by the Sovereign (Queen or King). {"\n"}It is a
+        remarkably simple yet powerful principle:
+        {"\n"}
+        <Text style={s.textHighlighted}>
+          Canada is personified by the Sovereign
+        </Text>{" "}
+        just as the Sovereign is personified by Canada.
       </Text>
       <Text style={[s.text, s.italicCenter]}>{oathText}</Text>
     </ScrollView>

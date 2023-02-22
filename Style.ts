@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "./utils/colors";
 
 export const s = StyleSheet.create({
   text: {
@@ -14,5 +15,8 @@ export const s = StyleSheet.create({
   italicCenter: {
     textAlign: "center",
     fontStyle: "italic",
+  },
+  textHighlighted: {
+    backgroundColor: colors.accent,
   },
 });
