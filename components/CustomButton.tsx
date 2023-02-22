@@ -1,6 +1,6 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import Colors from "../utils/colors";
+import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
+import colors from "../utils/colors";
 
 type ButtonProps = {
   title: string;
@@ -9,7 +9,10 @@ type ButtonProps = {
   textColor?: string;
   borderColor?: string;
   buttonStylesOverride?: any;
+  buttonTextOverride?: any;
+  iconStyleOverride?: any;
   image?: JSX.Element;
+  disabled?: boolean;
 };
 
 function CustomButton({
@@ -19,26 +22,38 @@ function CustomButton({
   textColor,
   borderColor,
   buttonStylesOverride,
+  buttonTextOverride,
+  iconStyleOverride,
   image,
+  disabled,
 }: ButtonProps) {
   return (
     <TouchableOpacity
       style={[
         styles.button,
         {
-          backgroundColor: backgroundColor || Colors.primary500,
-          borderColor: borderColor || Colors.primary500,
+          backgroundColor: disabled
+            ? colors.disabled
+            : backgroundColor || colors.primary500,
+          borderColor: disabled
+            ? colors.transparent
+            : borderColor || colors.primary500,
           ...buttonStylesOverride,
         },
       ]}
       onPress={onPress}
+      disabled={disabled || false}
     >
-      <Text style={[styles.buttonText, { color: textColor || Colors.white }]}>
+      <Text
+        style={[
+          styles.buttonText,
+          { color: textColor || colors.white },
+          { ...buttonTextOverride },
+        ]}
+      >
         {title}
       </Text>
-      <Text style={{ textAlign: "center", marginBottom: -5, marginLeft: 5 }}>
-        {image}
-      </Text>
+      <View style={[{ marginLeft: 5 }, { ...iconStyleOverride }]}>{image}</View>
     </TouchableOpacity>
   );
 }

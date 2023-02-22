@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import colors from "../utils/colors";
+import CustomButton from "./CustomButton";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 type OptionProps = {
   currentOption: string;
@@ -71,6 +73,12 @@ const QuizCard = ({
   const [isError, setIsError] = useState(false);
   const [currentOption, setCurrentOption] = useState("");
 
+  const resetQuestions = () => {
+    setIsError(false);
+    setIsCorrect(false);
+    setCurrentOption("");
+  };
+
   const validateHandler = (answer: string) => {
     if (answer === correctChoice) {
       setIsCorrect(true);
@@ -112,6 +120,7 @@ const QuizCard = ({
       {choices.map((question) => {
         return (
           <Option
+            key={question}
             currentOption={currentOption}
             option={question}
             validateHandler={validateHandler}
@@ -120,6 +129,24 @@ const QuizCard = ({
           />
         );
       })}
+      <View
+        style={{
+          marginTop: 20,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-end",
+        }}
+      >
+        <CustomButton
+          disabled={!Boolean(currentOption)}
+          title="Next"
+          onPress={resetQuestions}
+          buttonStylesOverride={{ width: "40%" }}
+          image={
+            <Ionicons name="ios-chevron-forward" size={20} color="white" />
+          }
+        />
+      </View>
     </>
   );
 };

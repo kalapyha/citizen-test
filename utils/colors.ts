@@ -4,6 +4,7 @@ export default {
   accent: "#ffc629",
   divider: "rgba(247,247,247,1.0)",
   disabled: "rgba(0, 0, 0, 0.12)",
+  transparent: "rgba(0, 0, 0, 0)",
   white: "#fff",
   successMain: "#00873d",
   successDark: "#0d6932",
