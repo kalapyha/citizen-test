@@ -32,7 +32,7 @@ const TheoryListScreen = (): JSX.Element => {
               <Button
                 color={Colors.primary500}
                 title="Who We Are"
-                onPress={() => navigation.navigate("OathScreen" as never)}
+                onPress={() => navigation.navigate("WhoWeAreScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
