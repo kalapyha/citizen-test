@@ -16,6 +16,7 @@ type OptionProps = {
   option: string;
   isCorrect?: boolean;
   isError?: boolean;
+  disabled?: boolean;
   validateHandler: (option: string) => void;
 };
 const Option = ({
@@ -24,6 +25,7 @@ const Option = ({
   isCorrect,
   isError,
   validateHandler,
+  disabled,
 }: OptionProps): JSX.Element => {
   const getBgColor = () => {
     if (currentOption === option && isCorrect) {
@@ -36,7 +38,6 @@ const Option = ({
   return (
     <TouchableOpacity
       onPress={() => validateHandler(option)}
-      //   disabled={isOptionsDisabled}
       key={option}
       style={[
         {
@@ -52,6 +53,7 @@ const Option = ({
         },
         styles.shadowProp,
       ]}
+      disabled={disabled}
     >
       <Text style={{ fontSize: 16, color: colors.white }}>{option}</Text>
     </TouchableOpacity>
@@ -62,12 +64,18 @@ interface QuizCardProps {
   question: string;
   choices: string[];
   correctChoice: string;
+  handleAnswer: (answer: string) => void;
+  questionsLength: number;
+  currentQuestionIndex: number;
 }
 
 const QuizCard = ({
   question,
   choices,
   correctChoice,
+  handleAnswer,
+  questionsLength,
+  currentQuestionIndex,
 }: QuizCardProps): JSX.Element => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -77,6 +85,7 @@ const QuizCard = ({
     setIsError(false);
     setIsCorrect(false);
     setCurrentOption("");
+    handleAnswer(currentOption);
   };
 
   const validateHandler = (answer: string) => {
@@ -110,7 +119,7 @@ const QuizCard = ({
               backgroundColor: colors.primary500,
             },
             {
-              width: 150, // TODO make dynamic
+              width: `${(currentQuestionIndex / questionsLength) * 100}%`,
             },
           ]}
         ></Animated.View>
@@ -126,6 +135,7 @@ const QuizCard = ({
             validateHandler={validateHandler}
             isCorrect={isCorrect}
             isError={isError}
+            disabled={!!currentOption}
           />
         );
       })}
