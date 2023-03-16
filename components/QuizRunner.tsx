@@ -33,8 +33,6 @@ const QuizRunner = (props: { questions: QuestionProps[] }) => {
     );
   }
 
-  console.log("currentQuestionIndex", currentQuestionIndex);
-  console.log("props.questions.length", props.questions.length);
   return (
     <View>
       <QuizCard

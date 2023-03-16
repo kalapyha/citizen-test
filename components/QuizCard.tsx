@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import colors from "../utils/colors";
 import CustomButton from "./CustomButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { s } from "../Style";
 
 type OptionProps = {
   currentOption: string;
@@ -101,7 +102,7 @@ const QuizCard = ({
   };
 
   return (
-    <>
+    <View style={{ marginTop: 20, marginLeft: 10, marginRight: 10 }}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary500} />
       <View
         style={{
@@ -124,8 +125,7 @@ const QuizCard = ({
           ]}
         ></Animated.View>
       </View>
-      <Text style={{ margin: 20 }}>{correctChoice}</Text>
-      <Text style={{ margin: 20 }}>{question}</Text>
+      <Text style={s.text}>{question}</Text>
       {choices.map((question) => {
         return (
           <Option
@@ -157,7 +157,7 @@ const QuizCard = ({
           }
         />
       </View>
-    </>
+    </View>
   );
 };
 
