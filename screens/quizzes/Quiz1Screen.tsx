@@ -1,6 +1,5 @@
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-import QuizCard from "../../components/QuizCard";
 import QuizRunner from "../../components/QuizRunner";
 const Quiz1Screen = (): JSX.Element => {
   const quiz1 = [
@@ -73,7 +72,7 @@ const Quiz1Screen = (): JSX.Element => {
 
   return (
     <View>
-      <QuizRunner questions={quiz1}></QuizRunner>
+      <QuizRunner questions={quiz1} quizId="quiz1"></QuizRunner>
     </View>
   );
 };

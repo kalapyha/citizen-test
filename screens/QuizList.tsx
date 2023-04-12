@@ -1,10 +1,22 @@
 import { Text, StyleSheet, Button, SectionList, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "../utils/colors";
+import { getQuizResults } from "../utils/storage";
 
 const QuizList = (): JSX.Element => {
+  const [quizResults, setQuizResults] = useState([]);
+
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const fetchQuizResults = async () => {
+      const results = await getQuizResults("quiz1");
+      setQuizResults(results);
+    };
+    fetchQuizResults();
+  });
+  console.log(quizResults);
   return (
     <View style={styles.container}>
       <SectionList
@@ -17,6 +29,7 @@ const QuizList = (): JSX.Element => {
                 title="Quiz 1 | Oath"
                 onPress={() => navigation.navigate("Quiz1Screen" as never)}
               />,
+              // <Text>{quizResults}</Text>
               <Button
                 color={Colors.primary500}
                 title="Quiz 2 | Who We Are"
@@ -39,7 +52,7 @@ const QuizList = (): JSX.Element => {
             data: [
               <Button
                 color={Colors.primary500}
-                title="Quiz 1 | How Canadians Govern Themselves"
+                title="Quiz 1 | How Canadians Govern "
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
@@ -100,7 +113,12 @@ const QuizList = (): JSX.Element => {
             ],
           },
         ]}
-        renderItem={({ item }) => <View style={styles.item}>{item}</View>}
+        renderItem={({ item }) => (
+          <View style={styles.item}>
+            {item}
+            <Text>43</Text>
+          </View>
+        )}
         renderSectionHeader={({ section }) => (
           <Text style={styles.sectionHeader}>{section.title}</Text>
         )}
@@ -132,8 +150,11 @@ const styles = StyleSheet.create({
     borderColor: Colors.divider,
     borderBottomWidth: 1,
     display: "flex",
-    alignItems: "flex-start",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingLeft: 5,
+    paddingRight: 15,
     fontSize: 18,
     height: 44,
   },
