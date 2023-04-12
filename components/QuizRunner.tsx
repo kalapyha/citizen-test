@@ -25,7 +25,7 @@ const QuizRunner = (props: { questions: QuestionProps[]; quizId: string }) => {
 
   if (!currentQuestion) {
     saveQuizResults(
-      String(Math.floor((score / props.questions.length) * 100)),
+      `${Math.floor((score / props.questions.length) * 100)}%`,
       props.quizId
     );
     return (

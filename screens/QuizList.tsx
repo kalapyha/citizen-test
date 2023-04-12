@@ -5,18 +5,64 @@ import Colors from "../utils/colors";
 import { getQuizResults } from "../utils/storage";
 
 const QuizList = (): JSX.Element => {
-  const [quizResults, setQuizResults] = useState([]);
+  const [quizResults, setQuizResults] = useState({
+    quiz1: "",
+    quiz2: "",
+    quiz3: "",
+    quiz4: "",
+    quiz5: "",
+    quiz6: "",
+    quiz7: "",
+    quiz8: "",
+    quiz9: "",
+    quiz10: "",
+    quiz11: "",
+    quiz12: "",
+    quiz13: "",
+    quiz14: "",
+    quiz15: "",
+  });
 
   const navigation = useNavigation();
 
   useEffect(() => {
     const fetchQuizResults = async () => {
-      const results = await getQuizResults("quiz1");
-      setQuizResults(results);
+      const quiz1 = await getQuizResults("quiz1");
+      const quiz2 = await getQuizResults("quiz2");
+      const quiz3 = await getQuizResults("quiz3");
+      const quiz4 = await getQuizResults("quiz4");
+      const quiz5 = await getQuizResults("quiz5");
+      const quiz6 = await getQuizResults("quiz6");
+      const quiz7 = await getQuizResults("quiz7");
+      const quiz8 = await getQuizResults("quiz8");
+      const quiz9 = await getQuizResults("quiz9");
+      const quiz10 = await getQuizResults("quiz10");
+      const quiz11 = await getQuizResults("quiz11");
+      const quiz12 = await getQuizResults("quiz12");
+      const quiz13 = await getQuizResults("quiz13");
+      const quiz14 = await getQuizResults("quiz14");
+      const quiz15 = await getQuizResults("quiz15");
+      setQuizResults({
+        ...quizResults,
+        quiz1: quiz1[0] || "",
+        quiz2: quiz2[0] || "",
+        quiz3: quiz3[0] || "",
+        quiz4: quiz4[0] || "",
+        quiz5: quiz5[0] || "",
+        quiz6: quiz6[0] || "",
+        quiz7: quiz7[0] || "",
+        quiz8: quiz8[0] || "",
+        quiz9: quiz9[0] || "",
+        quiz10: quiz10[0] || "",
+        quiz11: quiz11[0] || "",
+        quiz12: quiz12[0] || "",
+        quiz13: quiz13[0] || "",
+        quiz14: quiz14[0] || "",
+        quiz15: quiz15[0] || "",
+      });
     };
     fetchQuizResults();
-  });
-  console.log(quizResults);
+  }, []);
   return (
     <View style={styles.container}>
       <SectionList
@@ -25,22 +71,25 @@ const QuizList = (): JSX.Element => {
             title: "Chapter 1",
             data: [
               <Button
+                testID="quiz1"
                 color={Colors.primary500}
                 title="Quiz 1 | Oath"
                 onPress={() => navigation.navigate("Quiz1Screen" as never)}
               />,
-              // <Text>{quizResults}</Text>
               <Button
+                testID="quiz2"
                 color={Colors.primary500}
                 title="Quiz 2 | Who We Are"
                 onPress={() => navigation.navigate("WhoWeAreScreen" as never)}
               />,
               <Button
+                testID="quiz3"
                 color={Colors.primary500}
                 title="Quiz 3 | Canada's History"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
+                testID="quiz4"
                 color={Colors.primary500}
                 title="Quiz 4 | Modern Canada"
                 onPress={() => navigation.navigate("OathScreen" as never)}
@@ -52,27 +101,27 @@ const QuizList = (): JSX.Element => {
             data: [
               <Button
                 color={Colors.primary500}
-                title="Quiz 1 | How Canadians Govern "
+                title="Quiz 5 | How Canadians Govern "
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 2 | Federal Elections"
+                title="Quiz 6 | Federal Elections"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 3 | The Justice System"
+                title="Quiz 7 | The Justice System"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 4 | Canadian Symbols"
+                title="Quiz 8 | Canadian Symbols"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 5 | Canada's Economy"
+                title="Quiz 9 | Canada's Economy"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
             ],
@@ -82,43 +131,46 @@ const QuizList = (): JSX.Element => {
             data: [
               <Button
                 color={Colors.primary500}
-                title="Quiz 1 | Canada's Regions"
+                title="Quiz 10 | Canada's Regions"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 2 | The Atlantic Provinces"
+                title="Quiz 11 | The Atlantic Provinces"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 3 | Central Canada"
+                title="Quiz 12 | Central Canada"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 4 | The Prairie Provinces"
+                title="Quiz 13 | The Prairie Provinces"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 5 | The West Coast"
+                title="Quiz 14 | The West Coast"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
               <Button
                 color={Colors.primary500}
-                title="Quiz 6 | The Northern Territories"
+                title="Quiz 15 | The Northern Territories"
                 onPress={() => navigation.navigate("OathScreen" as never)}
               />,
             ],
           },
         ]}
-        renderItem={({ item }) => (
-          <View style={styles.item}>
-            {item}
-            <Text>43</Text>
-          </View>
-        )}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.item}>
+              {item}
+              {/* @ts-ignore */}
+              <Text>{quizResults[item.props.testID] || ""}</Text>
+            </View>
+          );
+        }}
         renderSectionHeader={({ section }) => (
           <Text style={styles.sectionHeader}>{section.title}</Text>
         )}
