@@ -5,6 +5,7 @@ import colors from "../utils/colors";
 type ButtonProps = {
   title: string;
   onPress: () => void;
+  isIconButton?: boolean;
   backgroundColor?: string;
   textColor?: string;
   borderColor?: string;
@@ -26,7 +27,17 @@ function CustomButton({
   iconStyleOverride,
   image,
   disabled,
+  isIconButton = false,
 }: ButtonProps) {
+  if (isIconButton) {
+    return (
+      <TouchableOpacity onPress={onPress} disabled={disabled || false}>
+        <View style={[{ marginLeft: 20 }, { ...iconStyleOverride }]}>
+          {image}
+        </View>
+      </TouchableOpacity>
+    );
+  }
   return (
     <TouchableOpacity
       style={[

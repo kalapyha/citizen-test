@@ -161,6 +161,16 @@ const QuizList = (): JSX.Element => {
               />,
             ],
           },
+          {
+            title: "Favorites",
+            data: [
+              <Button
+                color={Colors.primary500}
+                title="Your favorite questions"
+                onPress={() => navigation.navigate("FavoritesScreen" as never)}
+              />,
+            ],
+          },
         ]}
         renderItem={({ item }) => {
           return (
@@ -179,6 +189,7 @@ const QuizList = (): JSX.Element => {
             ? `basicListEntry-${item.props.title}`
             : `basicListEntry-${Math.floor(Math.random() * 1000)}`
         }
+        style={{ marginBottom: 20 }}
       />
     </View>
   );

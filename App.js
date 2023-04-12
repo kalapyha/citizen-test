@@ -8,6 +8,7 @@ import MainScreen from "./screens/MainScreen";
 import OathScreen from "./screens/theory/OathScreen";
 import WhoWeAreScreen from "./screens/theory/WhoWeAreScreen";
 import Quiz1Screen from "./screens/quizzes/Quiz1Screen";
+import FavoritesScreen from "./screens/quizzes/FavoritesScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -36,7 +37,6 @@ export default function App() {
             component={QuizList}
             options={{
               title: "List of Quizzes",
-              headerRight: () => <Text>+</Text>,
             }}
           />
           <Stack.Screen
@@ -53,6 +53,11 @@ export default function App() {
             name="Quiz1Screen"
             component={Quiz1Screen}
             options={{ title: "Who we are | Quiz" }}
+          />
+          <Stack.Screen
+            name="FavoritesScreen"
+            component={FavoritesScreen}
+            options={{ title: "Favorite questions" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

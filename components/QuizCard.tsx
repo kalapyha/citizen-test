@@ -11,6 +11,7 @@ import colors from "../utils/colors";
 import CustomButton from "./CustomButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { s } from "../Style";
+import { saveQuizToFavorites } from "../utils/storage";
 
 type OptionProps = {
   currentOption: string;
@@ -81,10 +82,12 @@ const QuizCard = ({
   const [isCorrect, setIsCorrect] = useState(false);
   const [isError, setIsError] = useState(false);
   const [currentOption, setCurrentOption] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const resetQuestions = () => {
     setIsError(false);
     setIsCorrect(false);
+    setIsFavorite(false);
     setCurrentOption("");
     handleAnswer(currentOption);
   };
@@ -143,10 +146,26 @@ const QuizCard = ({
         style={{
           marginTop: 20,
           display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-end",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexDirection: "row",
         }}
       >
+        <CustomButton
+          disabled={isFavorite}
+          title=""
+          onPress={() => {
+            setIsFavorite(true);
+            saveQuizToFavorites(question, choices, correctChoice);
+          }}
+          isIconButton
+          image={
+            <Ionicons
+              name={isFavorite ? "star-sharp" : "star-outline"}
+              size={20}
+            />
+          }
+        />
         <CustomButton
           disabled={!Boolean(currentOption)}
           title="Next"
