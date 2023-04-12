@@ -11,7 +11,11 @@ interface QuestionProps {
   correctChoice: string;
 }
 
-const QuizRunner = (props: { questions: QuestionProps[]; quizId: string }) => {
+const QuizRunner = (props: {
+  questions: QuestionProps[];
+  quizId: string;
+  isFavorites?: boolean;
+}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -41,6 +45,7 @@ const QuizRunner = (props: { questions: QuestionProps[]; quizId: string }) => {
   return (
     <View>
       <QuizCard
+        isFavorites={props.isFavorites || false}
         question={currentQuestion.question}
         choices={shuffleArray(currentQuestion.choices)}
         correctChoice={currentQuestion.correctChoice}

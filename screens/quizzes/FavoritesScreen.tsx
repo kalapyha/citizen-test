@@ -16,7 +16,11 @@ const FavoritesScreen = (): JSX.Element => {
 
   return (
     <View>
-      <QuizRunner questions={favoriteQuizzes} quizId="favorites"></QuizRunner>
+      <QuizRunner
+        questions={favoriteQuizzes}
+        quizId="favorites"
+        isFavorites
+      ></QuizRunner>
     </View>
   );
 };

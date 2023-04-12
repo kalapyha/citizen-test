@@ -8,6 +8,7 @@ import MainScreen from "./screens/MainScreen";
 import OathScreen from "./screens/theory/OathScreen";
 import WhoWeAreScreen from "./screens/theory/WhoWeAreScreen";
 import Quiz1Screen from "./screens/quizzes/Quiz1Screen";
+import Quiz2Screen from "./screens/quizzes/Quiz2Screen";
 import FavoritesScreen from "./screens/quizzes/FavoritesScreen";
 
 export default function App() {
@@ -52,7 +53,12 @@ export default function App() {
           <Stack.Screen
             name="Quiz1Screen"
             component={Quiz1Screen}
-            options={{ title: "Who we are | Quiz" }}
+            options={{ title: "Quiz 1" }}
+          />
+          <Stack.Screen
+            name="Quiz2Screen"
+            component={Quiz2Screen}
+            options={{ title: "Quiz 2" }}
           />
           <Stack.Screen
             name="FavoritesScreen"

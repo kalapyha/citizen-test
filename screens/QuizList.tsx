@@ -80,7 +80,7 @@ const QuizList = (): JSX.Element => {
                 testID="quiz2"
                 color={Colors.primary500}
                 title="Quiz 2 | Who We Are"
-                onPress={() => navigation.navigate("WhoWeAreScreen" as never)}
+                onPress={() => navigation.navigate("Quiz2Screen" as never)}
               />,
               <Button
                 testID="quiz3"

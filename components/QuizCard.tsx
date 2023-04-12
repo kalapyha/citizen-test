@@ -69,6 +69,7 @@ interface QuizCardProps {
   handleAnswer: (answer: string) => void;
   questionsLength: number;
   currentQuestionIndex: number;
+  isFavorites: boolean;
 }
 
 const QuizCard = ({
@@ -78,6 +79,7 @@ const QuizCard = ({
   handleAnswer,
   questionsLength,
   currentQuestionIndex,
+  isFavorites,
 }: QuizCardProps): JSX.Element => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -151,21 +153,23 @@ const QuizCard = ({
           flexDirection: "row",
         }}
       >
-        <CustomButton
-          disabled={isFavorite}
-          title=""
-          onPress={() => {
-            setIsFavorite(true);
-            saveQuizToFavorites(question, choices, correctChoice);
-          }}
-          isIconButton
-          image={
-            <Ionicons
-              name={isFavorite ? "star-sharp" : "star-outline"}
-              size={20}
-            />
-          }
-        />
+        {!isFavorites && (
+          <CustomButton
+            disabled={isFavorite}
+            title=""
+            onPress={() => {
+              setIsFavorite(true);
+              saveQuizToFavorites(question, choices, correctChoice);
+            }}
+            isIconButton
+            image={
+              <Ionicons
+                name={isFavorite ? "star-sharp" : "star-outline"}
+                size={20}
+              />
+            }
+          />
+        )}
         <CustomButton
           disabled={!Boolean(currentOption)}
           title="Next"
