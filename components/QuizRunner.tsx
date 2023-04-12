@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { shuffleArray } from "../utils/helpers";
 import QuizCard from "./QuizCard";
 import { s } from "../Style";
+import { saveQuizResults } from "../utils/storage";
 
 interface QuestionProps {
   question: string;
@@ -10,7 +11,7 @@ interface QuestionProps {
   correctChoice: string;
 }
 
-const QuizRunner = (props: { questions: QuestionProps[] }) => {
+const QuizRunner = (props: { questions: QuestionProps[]; quizId: string }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -23,6 +24,10 @@ const QuizRunner = (props: { questions: QuestionProps[] }) => {
   };
 
   if (!currentQuestion) {
+    saveQuizResults(
+      String(Math.floor((score / props.questions.length) * 100)),
+      props.quizId
+    );
     return (
       <View>
         <Text style={s.heading}>Quiz complete!</Text>
