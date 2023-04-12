@@ -86,13 +86,13 @@ const QuizList = (): JSX.Element => {
                 testID="quiz3"
                 color={Colors.primary500}
                 title="Quiz 3 | Canada's History"
-                onPress={() => navigation.navigate("OathScreen" as never)}
+                onPress={() => navigation.navigate("Quiz3Screen" as never)}
               />,
               <Button
                 testID="quiz4"
                 color={Colors.primary500}
                 title="Quiz 4 | Modern Canada"
-                onPress={() => navigation.navigate("OathScreen" as never)}
+                onPress={() => navigation.navigate("Quiz4Screen" as never)}
               />,
             ],
           },

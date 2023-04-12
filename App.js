@@ -9,6 +9,8 @@ import OathScreen from "./screens/theory/OathScreen";
 import WhoWeAreScreen from "./screens/theory/WhoWeAreScreen";
 import Quiz1Screen from "./screens/quizzes/Quiz1Screen";
 import Quiz2Screen from "./screens/quizzes/Quiz2Screen";
+import Quiz3Screen from "./screens/quizzes/Quiz3Screen";
+import Quiz4Screen from "./screens/quizzes/Quiz4Screen";
 import FavoritesScreen from "./screens/quizzes/FavoritesScreen";
 
 export default function App() {
@@ -59,6 +61,16 @@ export default function App() {
             name="Quiz2Screen"
             component={Quiz2Screen}
             options={{ title: "Quiz 2" }}
+          />
+          <Stack.Screen
+            name="Quiz3Screen"
+            component={Quiz3Screen}
+            options={{ title: "Quiz 3" }}
+          />
+          <Stack.Screen
+            name="Quiz4Screen"
+            component={Quiz4Screen}
+            options={{ title: "Quiz 4" }}
           />
           <Stack.Screen
             name="FavoritesScreen"
