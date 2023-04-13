@@ -2,11 +2,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const saveQuizResults = async (quizResults: string, quizId: string) => {
   try {
-    // const existingResults = (await AsyncStorage.getItem(
-    //   `@${quizId}:quizResults`
-    // )) as string;
-    // const results = JSON.parse(existingResults) || [];
-    // results.push(quizResults);
     await AsyncStorage.setItem(
       `@${quizId}:quizResults`,
       JSON.stringify([String(quizResults)])

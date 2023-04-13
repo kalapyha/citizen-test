@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CustomButton /> renders correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "disabled": false,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#2572b4",
+      "borderColor": "#2572b4",
+      "borderRadius": 5,
+      "borderWidth": 2,
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 10,
+      "opacity": 1,
+      "paddingHorizontal": 20,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 18,
+          "fontWeight": "bold",
+          "paddingHorizontal": 5,
+          "textAlign": "center",
+        },
+        {
+          "color": "#fff",
+        },
+        {},
+      ]
+    }
+  >
+    test
+  </Text>
+  <View
+    style={
+      [
+        {
+          "marginLeft": 5,
+        },
+        {},
+      ]
+    }
+  />
+</View>
+`;

@@ -12,7 +12,7 @@ const FavoritesScreen = (): JSX.Element => {
       setFavoriteQuizzes(favorites);
     };
     fetchFavorites();
-  }, []);
+  });
 
   return (
     <View>
