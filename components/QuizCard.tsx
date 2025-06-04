@@ -13,13 +13,18 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { s } from "../Style";
 import { saveQuizToFavorites } from "../utils/storage";
 
+interface Choice {
+  id: number;
+  text: string;
+}
+
 type OptionProps = {
-  currentOption: string;
-  option: string;
+  currentOption: Choice | null;
+  option: Choice;
   isCorrect?: boolean;
   isError?: boolean;
   disabled?: boolean;
-  validateHandler: (option: string) => void;
+  validateHandler: (option: Choice) => void;
 };
 const Option = ({
   currentOption,
@@ -30,9 +35,9 @@ const Option = ({
   disabled,
 }: OptionProps): JSX.Element => {
   const getBgColor = () => {
-    if (currentOption === option && isCorrect) {
+    if (currentOption?.id === option.id && isCorrect) {
       return colors.successMain;
-    } else if (currentOption === option && isError) {
+    } else if (currentOption?.id === option.id && isError) {
       return colors.errorMain;
     }
     return colors.primary200;
@@ -40,7 +45,7 @@ const Option = ({
   return (
     <TouchableOpacity
       onPress={() => validateHandler(option)}
-      key={option}
+      key={option.id}
       style={[
         {
           backgroundColor: getBgColor(),
@@ -57,16 +62,16 @@ const Option = ({
       ]}
       disabled={disabled}
     >
-      <Text style={{ fontSize: 16, color: colors.white }}>{option}</Text>
+      <Text style={{ fontSize: 16, color: colors.white }}>{option.text}</Text>
     </TouchableOpacity>
   );
 };
 
 interface QuizCardProps {
   question: string;
-  choices: string[];
-  correctChoice: string;
-  handleAnswer: (answer: string) => void;
+  choices: Array<{ id: number; text: string }>;
+  correctChoice: number;
+  handleAnswer: (answerId: number) => void;
   questionsLength: number;
   currentQuestionIndex: number;
   isFavorites: boolean;
@@ -83,19 +88,21 @@ const QuizCard = ({
 }: QuizCardProps): JSX.Element => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [currentOption, setCurrentOption] = useState("");
+  const [currentOption, setCurrentOption] = useState<Choice | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
 
   const resetQuestions = () => {
     setIsError(false);
     setIsCorrect(false);
     setIsFavorite(false);
-    setCurrentOption("");
-    handleAnswer(currentOption);
+    if (currentOption) {
+      handleAnswer(currentOption.id);
+    }
+    setCurrentOption(null);
   };
 
-  const validateHandler = (answer: string) => {
-    if (answer === correctChoice) {
+  const validateHandler = (answer: Choice) => {
+    if (answer.id === correctChoice) {
       setIsCorrect(true);
       setIsError(false);
       setCurrentOption(answer);
@@ -131,12 +138,12 @@ const QuizCard = ({
         ></Animated.View>
       </View>
       <Text style={s.text}>{question}</Text>
-      {choices.map((question) => {
+      {choices.map((choice) => {
         return (
           <Option
-            key={question}
+            key={choice.id}
             currentOption={currentOption}
-            option={question}
+            option={choice}
             validateHandler={validateHandler}
             isCorrect={isCorrect}
             isError={isError}

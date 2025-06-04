@@ -3,12 +3,16 @@ import { Text, View } from "react-native";
 import { shuffleArray } from "../utils/helpers";
 import QuizCard from "./QuizCard";
 import { s } from "../Style";
-import { saveQuizResults } from "../utils/storage";
+import {
+  saveQuizResults,
+  DetailedQuizProgress,
+  FailedQuestionInfo,
+} from "../utils/storage";
 
 interface QuestionProps {
   question: string;
-  choices: string[];
-  correctChoice: string;
+  choices: Array<{ id: number; text: string }>;
+  correctChoice: number; // This is the ID of the correct choice
 }
 
 const QuizRunner = (props: {
@@ -19,19 +23,39 @@ const QuizRunner = (props: {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [failedQuestions, setFailedQuestions] = useState<FailedQuestionInfo[]>(
+    []
+  );
   const currentQuestion = props.questions[currentQuestionIndex];
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = (answerId: number) => {
+    if (answerId !== currentQuestion.correctChoice) {
+      const failedInfo: FailedQuestionInfo = {
+        questionText: currentQuestion.question,
+        userAnswerId: answerId,
+        correctAnswerId: currentQuestion.correctChoice,
+        choices: currentQuestion.choices,
+      };
+      setFailedQuestions((prev) => [...prev, failedInfo]);
+    } else {
+      setScore(score + 1);
+    }
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     setProgress((currentQuestionIndex / props.questions.length) * 100);
-    if (answer === currentQuestion.correctChoice) setScore(score + 1);
   };
 
   if (!currentQuestion) {
-    saveQuizResults(
-      `${Math.floor((score / props.questions.length) * 100)}%`,
-      props.quizId
-    );
+    const detailedProgress: DetailedQuizProgress = {
+      quizId: props.quizId,
+      score: score,
+      totalQuestions: props.questions.length,
+      failedQuestions: failedQuestions,
+      percentage: `${Math.floor(
+        (score / props.questions.length) * 100
+      )}%`,
+      timestamp: Date.now(),
+    };
+    saveQuizResults(detailedProgress, props.quizId);
     return (
       <View>
         <Text style={s.heading}>Quiz complete!</Text>
