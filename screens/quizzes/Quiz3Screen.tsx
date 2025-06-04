@@ -6,94 +6,109 @@ const Quiz2Screen = (): JSX.Element => {
     {
       question:
         "Which European country first established colonies in what is now Canada?",
-      choices: ["France", "Spain", "England", "Portugal"],
-      correctChoice: "France",
+      choices: [
+        { id: 0, text: "France" },
+        { id: 1, text: "Spain" },
+        { id: 2, text: "England" },
+        { id: 3, text: "Portugal" },
+      ],
+      correctChoice: 0,
     },
     {
       question: "Who was the first European explorer to land in Canada?",
       choices: [
-        "Christopher Columbus",
-        "John Cabot",
-        "Jacques Cartier",
-        "Samuel de Champlain",
+        { id: 0, text: "Christopher Columbus" },
+        { id: 1, text: "John Cabot" },
+        { id: 2, text: "Jacques Cartier" },
+        { id: 3, text: "Samuel de Champlain" },
       ],
-      correctChoice: "Jacques Cartier",
+      correctChoice: 2,
     },
     {
       question:
         "Which battle is considered a turning point in the French and Indian War?",
       choices: [
-        "Battle of Quebec",
-        "Battle of Bunker Hill",
-        "Battle of Trenton",
-        "Battle of Saratoga",
+        { id: 0, text: "Battle of Quebec" },
+        { id: 1, text: "Battle of Bunker Hill" },
+        { id: 2, text: "Battle of Trenton" },
+        { id: 3, text: "Battle of Saratoga" },
       ],
-      correctChoice: "Battle of Quebec",
+      correctChoice: 0,
     },
     {
       question: "When did Canada become a country?",
-      choices: ["July 1, 1867", "July 1, 1877", "July 1, 1887", "July 1, 1897"],
-      correctChoice: "July 1, 1867",
+      choices: [
+        { id: 0, text: "July 1, 1867" },
+        { id: 1, text: "July 1, 1877" },
+        { id: 2, text: "July 1, 1887" },
+        { id: 3, text: "July 1, 1897" },
+      ],
+      correctChoice: 0,
     },
     {
       question:
         "What event led to the forced relocation of thousands of Indigenous people in Canada?",
       choices: [
-        "The Great Depression",
-        "The First World War",
-        "The Second World War",
-        "The Indian Act",
+        { id: 0, text: "The Great Depression" },
+        { id: 1, text: "The First World War" },
+        { id: 2, text: "The Second World War" },
+        { id: 3, text: "The Indian Act" },
       ],
-      correctChoice: "The Indian Act",
+      correctChoice: 3,
     },
     {
       question:
         "Which Canadian soldier is known for his bravery during the Second World War?",
-      choices: ["Billy Bishop", "Arthur Currie", "Terry Fox", "Tommy Prince"],
-      correctChoice: "Tommy Prince",
+      choices: [
+        { id: 0, text: "Billy Bishop" },
+        { id: 1, text: "Arthur Currie" },
+        { id: 2, text: "Terry Fox" },
+        { id: 3, text: "Tommy Prince" },
+      ],
+      correctChoice: 3,
     },
     {
       question:
         "Which of the following was a major issue during the Quiet Revolution in Quebec?",
       choices: [
-        "Secession from Canada",
-        "The fight for women's rights",
-        "The fight for LGBTQ+ rights",
-        "The role of the Catholic Church in society",
+        { id: 0, text: "Secession from Canada" },
+        { id: 1, text: "The fight for women's rights" },
+        { id: 2, text: "The fight for LGBTQ+ rights" },
+        { id: 3, text: "The role of the Catholic Church in society" },
       ],
-      correctChoice: "The role of the Catholic Church in society",
+      correctChoice: 3,
     },
     {
       question:
         "Which of the following is NOT a significant event in Canadian history?",
       choices: [
-        "The discovery of insulin",
-        "The building of the Canadian Pacific Railway",
-        "The invention of the telephone",
-        "The signing of NAFTA",
+        { id: 0, text: "The discovery of insulin" },
+        { id: 1, text: "The building of the Canadian Pacific Railway" },
+        { id: 2, text: "The invention of the telephone" },
+        { id: 3, text: "The signing of NAFTA" },
       ],
-      correctChoice: "The signing of NAFTA",
+      correctChoice: 3,
     },
     {
       question: "Who was Canada's first female Prime Minister?",
       choices: [
-        "Kim Campbell",
-        "Pauline Marois",
-        "Rona Ambrose",
-        "Christy Clark",
+        { id: 0, text: "Kim Campbell" },
+        { id: 1, text: "Pauline Marois" },
+        { id: 2, text: "Rona Ambrose" },
+        { id: 3, text: "Christy Clark" },
       ],
-      correctChoice: "Kim Campbell",
+      correctChoice: 0,
     },
     {
       question:
         "Which Canadian athlete is known for winning four gold medals at the 1936 Olympics?",
       choices: [
-        "Donovan Bailey",
-        "Clara Hughes",
-        "Hayley Wickenheiser",
-        "Jesse Owens",
+        { id: 0, text: "Donovan Bailey" },
+        { id: 1, text: "Clara Hughes" },
+        { id: 2, text: "Hayley Wickenheiser" },
+        { id: 3, text: "Jesse Owens" },
       ],
-      correctChoice: "Jesse Owens",
+      correctChoice: 3,
     },
   ];
   return (
